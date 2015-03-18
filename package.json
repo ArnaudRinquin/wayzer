@@ -1,0 +1,23 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "A simple weather app displaying weather from multiple sources",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArnaudRinquin/weather"
+  },
+  "keywords": [
+    "angular",
+    "demo"
+  ],
+  "author": "Arnaud Rinquin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArnaudRinquin/weather/issues"
+  },
+  "homepage": "https://github.com/ArnaudRinquin/weather"
+}
