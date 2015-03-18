@@ -9,7 +9,7 @@ home.config(function($stateProvider){
   $stateProvider.state('home', {
     url: '/',
     template: '<h1>{{foo}}</h1>',
-    controller: require('./controller')
+    controller: require('./controller').name
   });
 
 });
