@@ -8,9 +8,10 @@
     "client:build": "browserify client/index.js -o public/script.js",
     "client:dev": "watchify client/index.js -o public/script.js",
     "server:start": "node server/index.js",
-    "server:dev": "open http://0.0.0.0:3000 && nodemon server/index.js",
+    "server:dev": "open http://0.0.0.0:3000 && nodemon --ignore client/ --ignore public/ server/index.js",
     "test:unit": "karma start",
-    "test:unit:dev": "karma start karma.dev.conf.js"
+    "test:unit:dev": "karma start karma.dev.conf.js",
+    "test:e2e": "protractor protractor.conf.js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "karma-jasmine": "^0.3.5",
     "karma-phantomjs-launcher": "^0.1.4",
     "nodemon": "^1.3.7",
+    "protractor": "^1.8.0",
     "watchify": "^2.4.0"
   }
 }
