@@ -8,7 +8,7 @@ home.config(function($stateProvider){
 
   $stateProvider.state('home', {
     url: '/',
-    template: '<h1>{{foo}}</h1>',
+    template: require('./template.html'),
     controller: require('./SingleCityWeatherController')
   });
 

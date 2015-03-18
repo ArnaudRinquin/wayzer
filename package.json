@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run client:build && npm run server:start",
-    "client:build": "browserify client/index.js -o public/script.js",
-    "client:dev": "watchify client/index.js -o public/script.js",
+    "client:build": "browserify -t stringify client/index.js -o public/script.js",
+    "client:dev": "watchify -t stringify client/index.js -o public/script.js",
     "server:start": "node server/index.js",
     "server:dev": "open http://0.0.0.0:3000 && nodemon --ignore client/ --ignore public/ server/index.js",
     "test:unit": "karma start",
@@ -31,7 +31,8 @@
     "angular": "^1.3.15",
     "angular-ui-router": "^0.2.13",
     "browserify": "^9.0.3",
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "stringify": "^3.1.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.3.15",

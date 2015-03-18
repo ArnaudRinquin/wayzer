@@ -67,6 +67,7 @@ module.exports = function(config) {
     // browserify options
     browserify: {
       watch: false,
+      transform: [ 'stringify' ]
     },
 
     // Add browserify to preprocessors

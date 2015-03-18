@@ -1,6 +1,6 @@
 describe('Controller', function(){
 
-  var SingleCityWeatherController = require('./SingleCityWeatherController');
+  var SingleCityWeatherController = require('./index');
 
   beforeEach(function(){
     this.scope = {};
