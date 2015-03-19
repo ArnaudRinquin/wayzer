@@ -1,8 +1,10 @@
 var angular = require('angular');
 
-module.exports = weatherApp = angular.module('weather', [
+var weatherApp = module.exports = angular.module('weather', [
   require('angular-ui-router'),
+  require('./common').name,
   require('./home').name
+
 ]);
 
 weatherApp.config(function($urlRouterProvider){

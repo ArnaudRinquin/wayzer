@@ -1,1 +1,7 @@
-<h1>{{foo}}</h1>
+<h1>{{controller.place.address}}</h1>
+<ul ng-show="controller.place.geocoding">
+  <li>Formatted address: {{controller.place.geocoding.formattedAddress}}</li>
+  <li>Latitude: {{controller.place.geocoding.location.lat}}</li>
+  <li>Longitude: {{controller.place.geocoding.location.lng}}</li>
+</ul>
+<input ng-model="controller.place.address" ng-change="controller.onAddressChange()">
