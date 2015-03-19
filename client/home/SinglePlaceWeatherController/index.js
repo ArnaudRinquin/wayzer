@@ -13,7 +13,13 @@ module.exports = function(Geocoding, WeatherStore){
 
   controller.onAddressChange = function(){
     this.place.geocoding = null;
-    Geocoding.bestResultForAddress(this.place.address).then(controller.setGeocoding);
+    var address = controller.place.address;
+    Geocoding.bestResultForAddress(address).then(function(geocoding){
+      // Prevent race condition, discard result if not the currnet addresse
+      if (controller.place.address === address) {
+        controller.setGeocoding(geocoding);
+      }
+    });
   };
 
   WeatherStore.on('change', controller.setCurrentWeatherData);

@@ -25,8 +25,16 @@ module.exports = function($http, OpenWeatherAPI){
       return;
     }
 
-    OpenWeatherAPI.fetchCurrentWeather(store.geocoding.location)
-      .then(store.setCurrentWeatherData);
+    var location = store.geocoding.location;
+
+    OpenWeatherAPI.fetchCurrentWeather(location)
+      .then(function(weatherData){
+
+        // Only handle current place results
+        if(store.geocoding && store.geocoding.location === location){
+          store.setCurrentWeatherData(weatherData);
+        };
+      });
 
   };
 
