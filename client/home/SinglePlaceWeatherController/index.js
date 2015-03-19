@@ -6,14 +6,14 @@ module.exports = function(Geocoding, WeatherStore){
     controller.place.currentWeather = WeatherStore.getCurrentWeatherData();
   }
 
-  controller.setPlaceGeocoding = function(geocoding){
+  controller.setGeocoding = function(geocoding){
     controller.place.geocoding = geocoding;
     WeatherStore.setPlace(geocoding);
   };
 
   controller.onAddressChange = function(){
     this.place.geocoding = null;
-    Geocoding.bestResultForAddress(this.place.address).then(controller.setPlaceGeocoding);
+    Geocoding.bestResultForAddress(this.place.address).then(controller.setGeocoding);
   };
 
   WeatherStore.on('change', controller.setCurrentWeatherData);
@@ -21,6 +21,5 @@ module.exports = function(Geocoding, WeatherStore){
   controller.place = {
     address: 'London, UK'
   };
-  controller.onAddressChange();
 
 }

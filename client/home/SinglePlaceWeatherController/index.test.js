@@ -7,8 +7,6 @@ describe('Controller', function(){
 
   var WeatherStore = {
     setPlace: function(geocoding){},
-    state: null,
-    data: null,
     on: function(){},
     off: function(){}
   };
