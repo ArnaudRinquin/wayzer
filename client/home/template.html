@@ -1,7 +1,27 @@
-<h1>{{controller.place.address}}</h1>
-<ul ng-show="controller.place.geocoding">
-  <li>Formatted address: {{controller.place.geocoding.formattedAddress}}</li>
-  <li>Latitude: {{controller.place.geocoding.location.lat}}</li>
-  <li>Longitude: {{controller.place.geocoding.location.lng}}</li>
-</ul>
+<h1>Weather app</h1>
+
 <input ng-model="controller.place.address" ng-change="controller.onAddressChange()">
+
+<div ng-show="controller.place.geocoding">
+  <h2>Geocoding informations</h2>
+  <ul>
+    <li>Formatted address: {{controller.place.geocoding.formattedAddress}}</li>
+    <li>Latitude: {{controller.place.geocoding.location.lat}}</li>
+    <li>Longitude: {{controller.place.geocoding.location.lng}}</li>
+  </ul>
+</div>
+
+<div ng-show="controller.place.currentWeather">
+  <h2>Current weather</h2>
+  <ul>
+    <li>Temperature: {{controller.place.currentWeather.main.temp}}</li>
+    <li>Pressure: {{controller.place.currentWeather.main.pressure}}</li>
+    <li>Humidity: {{controller.place.currentWeather.main.humidity}}</li>
+    <li>
+      Weather details:
+      <ul ng-repeat="weather in controller.place.currentWeather.weather">
+        <li>{{weather.main}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>
