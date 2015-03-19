@@ -4,8 +4,13 @@ describe('Controller', function(){
   var $rootScope = null;
 
   var SingleCityWeatherController = require('./index');
-  var ForecastIO = {
-    getForecastForCity: function(address){ return $q.when();}
+
+  var WeatherStore = {
+    setPlace: function(geocoding){},
+    state: null,
+    data: null,
+    on: function(){},
+    off: function(){}
   };
 
   var Geocoding = {
@@ -18,7 +23,7 @@ describe('Controller', function(){
   }));
 
   beforeEach(function(){
-    this.controller = new SingleCityWeatherController(Geocoding);
+    this.controller = new SingleCityWeatherController(Geocoding, WeatherStore);
   });
 
 
