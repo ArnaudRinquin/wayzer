@@ -2,6 +2,8 @@
 
 <input ng-model="controller.place.address" ng-change="controller.onAddressChange()">
 
+<div ng-show="controller.errors.geocoding">A problem occured while geocoding the address</div>
+
 <div ng-show="controller.place.geocoding">
   <h2>Geocoding informations</h2>
   <ul>

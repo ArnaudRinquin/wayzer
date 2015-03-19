@@ -12,14 +12,28 @@ module.exports = function(Geocoding, WeatherStore){
   };
 
   controller.onAddressChange = function(){
-    this.place.geocoding = null;
+    controller.place.geocoding = null;
+    controller.place.currentWeather = null;
+    controller.errors.geocoding = null;
+
     var address = controller.place.address;
-    Geocoding.bestResultForAddress(address).then(function(geocoding){
-      // Prevent race condition, discard result if not the currnet addresse
+
+    // Just do nothing unless use actually input an address
+    if(!address || address.replace(/\s+/, '') === '') {
+      return;
+    }
+
+    var setGeocodingIfRelevant = function(geocoding){
       if (controller.place.address === address) {
         controller.setGeocoding(geocoding);
       }
-    });
+    }
+
+    Geocoding.bestResultForAddress(address)
+      .then(setGeocodingIfRelevant)
+      .catch(function(error){
+        controller.errors.geocoding = error;
+      });
   };
 
   WeatherStore.on('change', controller.setCurrentWeatherData);
@@ -27,5 +41,7 @@ module.exports = function(Geocoding, WeatherStore){
   controller.place = {
     address: 'London, UK'
   };
+
+  controller.errors = {};
 
 }

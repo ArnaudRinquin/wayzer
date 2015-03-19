@@ -35,6 +35,9 @@ describe('Controller', function(){
       this.geocodingData = {
         some:'data'
       };
+      this.controller.currentWeather = {
+        not:'emtpy'
+      };
       this.deffered = $q.defer();
       spyOn(Geocoding, 'bestResultForAddress').and.returnValue(this.deffered.promise);
       this.controller.onAddressChange();
@@ -55,6 +58,12 @@ describe('Controller', function(){
 
     it('resets the place Geocoding geocoding while waiting', function(){
       expect(this.controller.place.geocoding).toBe(null);
+      this.deffered.resolve(this.geocodingData);
+      $rootScope.$apply();
+    });
+
+    it('resets the place current weather while waiting', function(){
+      expect(this.controller.place.currentWeather).toBe(null);
       this.deffered.resolve(this.geocodingData);
       $rootScope.$apply();
     });
