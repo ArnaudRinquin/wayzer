@@ -9,6 +9,7 @@ module.exports = function($http, $q, OpenWeatherAPI, ForecastioAPI, WeatherDataC
   }
 
   store.setCurrentWeatherData = function(currentWeather){
+    store.state = 'loaded';
     store.currentWeather = currentWeather;
     store.emit('change');
   }
@@ -24,6 +25,9 @@ module.exports = function($http, $q, OpenWeatherAPI, ForecastioAPI, WeatherDataC
     if (!store.geocoding) {
       return;
     }
+
+    store.state = 'reloading';
+    store.emit('change');
 
     var location = store.geocoding.location;
 

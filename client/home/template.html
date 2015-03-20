@@ -24,7 +24,8 @@
 
   <div ng-show="controller.place.currentWeather">
     <h2>Current weather - Average from {{controller.place.currentWeather.sources.length}} source(s)</h2>
-    <table class="pure-table pure-table-horizontal">
+    <h3 ng-show="controller.reloading">Reloading...</h3>
+    <table ng-hide="controller.reloading" class="pure-table pure-table-horizontal">
       <tr>
         <td><i class="wi wi-thermometer"></i></td>
         <td>{{controller.place.currentWeather.temperature | number : 2 }} <i class="wi wi-celsius"></i></td>

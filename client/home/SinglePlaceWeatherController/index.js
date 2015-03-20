@@ -10,6 +10,7 @@ module.exports = function(Geocoding, WeatherStore, Ticker){
     if (controller.errors.geocoding) {
       return;
     }
+    controller.reloading = WeatherStore.state === 'reloading';
     controller.place.currentWeather = WeatherStore.getCurrentWeatherData();
   }
 
