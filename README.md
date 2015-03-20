@@ -6,7 +6,7 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ArnaudRinquin/wayzer)
 
-Try me on [Heroku](http://wayzer.herokuapp.com/)
+Try me on [Heroku](https://wayzer.herokuapp.com/)
 
 ---
 
