@@ -1,6 +1,6 @@
 var EventEmitter = require('events').EventEmitter;
 
-module.exports = function($http, OpenWeatherAPI){
+module.exports = function($http, $q, OpenWeatherAPI, ForecastioAPI, WeatherDataCondenser){
 
   var store = new EventEmitter();
 
@@ -17,7 +17,7 @@ module.exports = function($http, OpenWeatherAPI){
     store.geocoding = geocoding;
     store.setCurrentWeatherData(null);
     store.refreshData();
-  }
+  };
 
   store.refreshData = function(){
 
@@ -27,15 +27,23 @@ module.exports = function($http, OpenWeatherAPI){
 
     var location = store.geocoding.location;
 
-    OpenWeatherAPI.fetchCurrentWeather(location)
-      .then(function(weatherData){
+    $q.all({
+      forecastioData: ForecastioAPI.fetchCurrentWeather(location),
+      openWeatherData:OpenWeatherAPI.fetchCurrentWeather(location)
+    }).then(function(results){
 
-        // Only handle current place results
-        if(store.geocoding && store.geocoding.location === location){
-          store.setCurrentWeatherData(weatherData);
-        };
-      });
+      // Discard results if not relevant anymore
+      if(!store.geocoding || store.geocoding.location !== location){
+        return;
+      };
 
+      var condenser = WeatherDataCondenser.create()
+        .digestForecastioData(results.forecastioData)
+        .digestOpenWeather(results.openWeatherData);
+
+      store.setCurrentWeatherData(condenser.getCondensedWeather());
+
+    });
   };
 
   return store;

@@ -3,6 +3,11 @@ module.exports = function(Geocoding, WeatherStore){
   controller = this;
 
   controller.setCurrentWeatherData = function(){
+
+    // Don't display results if last geocoding failed
+    if (controller.errors.geocoding) {
+      return;
+    }
     controller.place.currentWeather = WeatherStore.getCurrentWeatherData();
   }
 

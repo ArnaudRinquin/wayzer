@@ -14,15 +14,15 @@
 </div>
 
 <div ng-show="controller.place.currentWeather">
-  <h2>Current weather</h2>
+  <h2>Current weather - Average from {{controller.place.currentWeather.sources.length}} source(s)</h2>
   <ul>
-    <li>Temperature: {{controller.place.currentWeather.main.temp}}</li>
-    <li>Pressure: {{controller.place.currentWeather.main.pressure}}</li>
-    <li>Humidity: {{controller.place.currentWeather.main.humidity}}</li>
+    <li>Temperature: {{controller.place.currentWeather.temperature}}</li>
+    <li>Pressure: {{controller.place.currentWeather.pressure}}</li>
+    <li>Humidity: {{controller.place.currentWeather.humidity}}</li>
     <li>
-      Weather details:
-      <ul ng-repeat="weather in controller.place.currentWeather.weather">
-        <li>{{weather.main}}</li>
+      Weather tags:
+      <ul ng-repeat="tag in controller.place.currentWeather.tags">
+        <li>{{tag}}</li>
       </ul>
     </li>
   </ul>
