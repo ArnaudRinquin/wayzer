@@ -2,7 +2,7 @@ var angular = require('angular');
 
 // URLs
 var servicelUrl = "https://api.forecast.io/forecast/f5c25f30d673a478dfd32f25698a64c2/";
-var ForecastioAPI = module.exports = angular.module('weather:common:forecastioAPI', []);
+var ForecastioAPI = module.exports = angular.module('wayzer:common:forecastioAPI', []);
 
 var jsonpUrlForLocation = function(lat, lng){
   return servicelUrl + lat + ',' + lng + '?callback=JSON_CALLBACK';

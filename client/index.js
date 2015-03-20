@@ -1,12 +1,12 @@
 var angular = require('angular');
 
-var weatherApp = module.exports = angular.module('weather', [
+var wayzerApp = module.exports = angular.module('wayzer', [
   require('angular-ui-router'),
   require('./common').name,
   require('./home').name
 
 ]);
 
-weatherApp.config(function($urlRouterProvider){
+wayzerApp.config(function($urlRouterProvider){
   $urlRouterProvider.otherwise('/');
 });

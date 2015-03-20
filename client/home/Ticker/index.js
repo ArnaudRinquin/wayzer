@@ -1,7 +1,7 @@
 var angular = require('angular');
 var EventEmitter = require('events').EventEmitter;
 
-var tickerModule = module.exports = angular.module('weather:home:ticker',[]);
+var tickerModule = module.exports = angular.module('wayzer:home:ticker',[]);
 
 tickerModule.factory('Ticker', function($interval){
 

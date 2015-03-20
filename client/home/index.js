@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-var home = module.exports = angular.module('weather:home', [
+var home = module.exports = angular.module('wayzer:home', [
   require('./Ticker').name
 ]);
 

@@ -1,11 +1,23 @@
 <html>
   <head>
-    <title>Weather</title>
+    <title>Wayzer</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/1.3.2/css/weather-icons.min.css">
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body ng-app="weather">
-    <div ui-view></div>
+  <body ng-app="wayzer">
+      <div class="pure-g" ui-view></div>
     <script charset="utf-8" src="/script.js"></script>
   </body>
 </html>

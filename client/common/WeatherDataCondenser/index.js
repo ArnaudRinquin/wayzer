@@ -1,6 +1,6 @@
 var angular = require('angular');
 
-var condenserModule = module.exports = angular.module('weather:common:weatherDataCondenser', []);
+var condenserModule = module.exports = angular.module('wayzer:common:weatherDataCondenser', []);
 
 var farenheitToCelsius = function(degrees){
   return (degrees - 32) / 1.8;

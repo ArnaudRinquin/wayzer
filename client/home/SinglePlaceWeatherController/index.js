@@ -1,4 +1,4 @@
-var REFRESH_INTERVAL = 5; // seconds
+var REFRESH_INTERVAL = 500; // seconds
 
 module.exports = function(Geocoding, WeatherStore, Ticker){
 

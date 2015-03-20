@@ -1,33 +1,52 @@
-<h1>Weather app</h1>
+<div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    <h1 class="brand-title">Wayzer</h1>
+    <h2 class="brand-tagline">Yet another (AngularJS) weather app</h2>
 
-<input ng-model="controller.place.address" ng-change="controller.onAddressChange()">
+    <form class="pure-form">
+      <fieldset>
+        <input ng-model="controller.place.address" ng-change="controller.onAddressChange()" placeholder="Type any address...">
+      </fieldset>
+    </form>
+  </div>
 
-<div ng-show="controller.errors.geocoding">A problem occured while geocoding the address</div>
+  <div ng-show="controller.errors.geocoding">A problem occured while geocoding the address</div>
 
-<map class="map" location="controller.place.geocoding.location"></map>
-
-<div ng-show="controller.place.geocoding">
-  <h2>Geocoding informations</h2>
-
-
-  <ul>
-    <li>Formatted address: {{controller.place.geocoding.formattedAddress}}</li>
-    <li>Latitude: {{controller.place.geocoding.location.lat}}</li>
-    <li>Longitude: {{controller.place.geocoding.location.lng}}</li>
-  </ul>
 </div>
 
-<div ng-show="controller.place.currentWeather">
-  <h2>Current weather - Average from {{controller.place.currentWeather.sources.length}} source(s)</h2>
-  <ul>
-    <li>Temperature: {{controller.place.currentWeather.temperature}}</li>
-    <li>Pressure: {{controller.place.currentWeather.pressure}}</li>
-    <li>Humidity: {{controller.place.currentWeather.humidity}}</li>
-    <li>
-      Weather tags:
-      <ul ng-repeat="tag in controller.place.currentWeather.tags">
-        <li>{{tag}}</li>
-      </ul>
-    </li>
-  </ul>
+<div class="content pure-u-1 pure-u-md-3-4">
+
+  <div ng-show="controller.place.geocoding">
+    <h2>About the address: {{controller.place.geocoding.formattedAddress}}</h2>
+    <h3>Lat: {{controller.place.geocoding.location.lat}}, Lng: {{controller.place.geocoding.location.lng}}</h3>
+    <map class="map" location="controller.place.geocoding.location"></map>
+  </div>
+
+  <div ng-show="controller.place.currentWeather">
+    <h2>Current weather - Average from {{controller.place.currentWeather.sources.length}} source(s)</h2>
+    <table class="pure-table pure-table-horizontal">
+      <tr>
+        <td><i class="wi wi-thermometer"></i></td>
+        <td>{{controller.place.currentWeather.temperature | number : 2 }} <i class="wi wi-celsius"></i></td>
+      </tr>
+      <tr>
+        <td><i class="wi wi-cloud-down"></i></td>
+        <td>{{controller.place.currentWeather.pressure | number : 2}} mBar</td>
+      </tr>
+      <tr>
+        <td><i class="wi wi-sprinkles"></i></td>
+        <td>{{controller.place.currentWeather.humidity * 100 | number : 1}} %</td>
+      </tr>
+      <tr>
+        <td>Tags
+        <td>
+          <label ng-repeat="tag in controller.place.currentWeather.tags">
+            {{tag}}
+          </label>
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
 </div>
