@@ -45,3 +45,24 @@ npm run client:dev
 npm run server:dev
 npm run test:unit:dev
 ```
+
+## How it's built
+
+### Stack
+
+Client
+
+* AngularJS
+  * ui-router
+* leaflet
+* browserify (+ watchify)
+
+Server
+
+* express
+  * static file serving
+  * proxy to OpenWeather HTTP API
+
+### Flow chart
+
+![App flow chart](/docs/flowchart.png)
