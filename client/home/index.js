@@ -4,6 +4,8 @@ var home = module.exports = angular.module('weather:home', [
   require('./Ticker').name
 ]);
 
+home.directive('map', require('./Map'));
+
 home.config(function($stateProvider){
 
   $stateProvider.state('home', {

@@ -4,8 +4,12 @@
 
 <div ng-show="controller.errors.geocoding">A problem occured while geocoding the address</div>
 
+<map class="map" location="controller.place.geocoding.location"></map>
+
 <div ng-show="controller.place.geocoding">
   <h2>Geocoding informations</h2>
+
+
   <ul>
     <li>Formatted address: {{controller.place.geocoding.formattedAddress}}</li>
     <li>Latitude: {{controller.place.geocoding.location.lat}}</li>
