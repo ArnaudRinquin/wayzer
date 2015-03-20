@@ -1,7 +1,7 @@
 var angular = require('angular');
 
 // URLs
-var servicelUrl = "http://api.openweathermap.org/data/2.5/weather";
+var servicelUrl = "http://api.openweathermap.org/data/2.5/weather?callback=JSON_CALLBACK";
 
 
 var OpenWeather = module.exports = angular.module('weather:common:openWeatherAPI', []);
@@ -10,7 +10,7 @@ OpenWeather.factory('OpenWeatherAPI', function($http){
 
   return {
     fetchCurrentWeather: function(location){
-      return $http.get(servicelUrl, {
+      return $http.jsonp(servicelUrl, {
         params: {
           lat: location.lat,
           lon: location.lng
