@@ -1,0 +1,12 @@
+{
+  "name": "Wayzer",
+  "description": "Yet another (AngularJS) weather app",
+  "keywords": [
+    "angularjs",
+    "weather",
+    "demo"
+  ],
+  "website": "http://wayzer.herokuapp.com/",
+  "repository": "https://github.com/ArnaudRinquin/wayzer",
+  "success_url": "/"
+}
