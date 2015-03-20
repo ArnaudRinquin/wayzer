@@ -1,7 +1,7 @@
 var angular = require('angular');
 
 var home = module.exports = angular.module('weather:home', [
-
+  require('./Ticker').name
 ]);
 
 home.config(function($stateProvider){

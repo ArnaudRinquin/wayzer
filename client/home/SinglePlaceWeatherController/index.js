@@ -1,4 +1,6 @@
-module.exports = function(Geocoding, WeatherStore){
+var REFRESH_INTERVAL = 5; // seconds
+
+module.exports = function(Geocoding, WeatherStore, Ticker){
 
   controller = this;
 
@@ -41,12 +43,27 @@ module.exports = function(Geocoding, WeatherStore){
       });
   };
 
-  WeatherStore.on('change', controller.setCurrentWeatherData);
+  controller.init = function(){
 
-  controller.place = {
-    address: 'London, UK'
-  };
+    // Set some initial data
+    controller.place = {
+      address: 'London, UK'
+    };
+    controller.errors = {};
 
-  controller.errors = {};
+    // Create a ticker and register to it
+    var ticker = Ticker.createTicker(REFRESH_INTERVAL * 1000);
+    ticker.start().on('tick', function(){
+      WeatherStore.refreshData();
+    });
+
+    // Register to weather data changes
+    WeatherStore.on('change', controller.setCurrentWeatherData);
+
+    // Trigger initial data loading
+    controller.onAddressChange();
+  }
+
+  controller.init();
 
 }
